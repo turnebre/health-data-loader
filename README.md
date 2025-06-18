@@ -43,13 +43,13 @@ pip install -r requirements.txt
 
 ```bash
 # Basic usage - process C-CDA XML file
-python health_pipeline.py path/to/your/health_data.xml
+python health_pipeline.py health_data/Document_XML/health_data.xml
 
 # With summary and custom database location
-python health_pipeline.py health_data/Document_XML/your_file.xml --database my_health.duckdb --summary
+python health_pipeline.py health_data/Document_XML/health_data.xml --database my_health.duckdb --summary
 
 # With debug logging
-python health_pipeline.py your_file.xml --log-level DEBUG --summary
+python health_pipeline.py health_data/Document_XML/health_data.xml --log-level DEBUG --summary
 ```
 
 ### 3. Example Output
