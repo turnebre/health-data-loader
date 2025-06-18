@@ -24,7 +24,7 @@ logger = logging.getLogger(__name__)
 class HealthDataPipeline:
     """Main health data processing pipeline."""
     
-    def __init__(self, xml_file_path: str, db_path: str = "health_data.duckdb"):
+    def __init__(self, xml_file_path: str, db_path: str = "/Users/Shared/health_data.duckdb"):
         self.xml_file_path = xml_file_path
         self.db_path = db_path
         
@@ -128,8 +128,8 @@ def main():
     parser.add_argument(
         '--database',
         '-d',
-        default='health_data.duckdb',
-        help='Path to DuckDB database file (default: health_data.duckdb)'
+        default='/Users/Shared/health_data.duckdb',
+        help='Path to DuckDB database file (default: /Users/Shared/health_data.duckdb)'
     )
     
     parser.add_argument(

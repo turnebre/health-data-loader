@@ -46,7 +46,7 @@ pip install -r requirements.txt
 python health_pipeline.py health_data/Document_XML/health_data.xml
 
 # With summary and custom database location
-python health_pipeline.py health_data/Document_XML/health_data.xml --database my_health.duckdb --summary
+python health_pipeline.py health_data/Document_XML/health_data.xml --database /Users/Shared/my_health.duckdb --summary
 
 # With debug logging
 python health_pipeline.py health_data/Document_XML/health_data.xml --log-level DEBUG --summary
@@ -139,7 +139,7 @@ CREATE TABLE vitals (
 # brew install duckdb  # On macOS
 # Or download from https://duckdb.org
 
-duckdb health_data.duckdb
+duckdb /Users/Shared/health_data.duckdb
 ```
 
 #### Using Python
@@ -148,7 +148,7 @@ import duckdb
 import pandas as pd
 
 # Connect to your health database
-conn = duckdb.connect('health_data.duckdb')
+conn = duckdb.connect('/Users/Shared/health_data.duckdb')
 
 # Query data
 df = conn.execute("SELECT * FROM medications WHERE status = 'Active'").df()
@@ -213,7 +213,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 # Connect to database
-conn = duckdb.connect('health_data.duckdb')
+conn = duckdb.connect('/Users/Shared/health_data.duckdb')
 
 # Weight trend analysis
 weight_data = conn.execute("""
@@ -261,7 +261,7 @@ print(lab_summary.head(10))
 python health_pipeline.py new_health_export.xml --summary
 
 # Use custom database name to keep separate
-python health_pipeline.py new_data.xml --database health_2024.duckdb --summary
+python health_pipeline.py new_data.xml --database /Users/Shared/health_2024.duckdb --summary
 ```
 
 ### 3. Data Update Strategy
@@ -291,7 +291,7 @@ python health_pipeline.py your_file.xml --summary --log-level DEBUG
 ```python
 import duckdb
 
-conn = duckdb.connect('health_data.duckdb')
+conn = duckdb.connect('/Users/Shared/health_data.duckdb')
 
 # Export all medications to CSV
 conn.execute("COPY medications TO 'medications.csv' (HEADER, DELIMITER ',')");
@@ -311,7 +311,7 @@ conn.execute("""
 import json
 import duckdb
 
-conn = duckdb.connect('health_data.duckdb')
+conn = duckdb.connect('/Users/Shared/health_data.duckdb')
 
 # Get data as Python objects
 results = conn.execute("SELECT * FROM results ORDER BY test_date DESC LIMIT 50").fetchall()
@@ -359,7 +359,7 @@ with open('recent_lab_results.json', 'w') as f:
 # Quick data quality check
 import duckdb
 
-conn = duckdb.connect('health_data.duckdb')
+conn = duckdb.connect('/Users/Shared/health_data.duckdb')
 
 print("Data Overview:")
 tables = ['medications', 'allergies', 'problems', 'procedures', 'results', 'vitals', 'immunizations']
@@ -378,6 +378,7 @@ print("Latest vital signs:", conn.execute("SELECT MAX(measurement_date) FROM vit
 ## 🔒 Privacy & Security
 
 - **Local Storage**: All data stays on your computer
+- **Shared Folder**: Database files are saved to `/Users/Shared/` for multi-user access on Mac
 - **No Cloud**: No data sent to external services  
 - **File Permissions**: Ensure database files have appropriate permissions
 - **Backup**: Consider backing up your `.duckdb` files
@@ -394,7 +395,7 @@ health-data-loader/
 ├── data_transformers.py     # Data cleaning and transformation
 ├── database.py              # Database schema and setup
 ├── simple_loader.py         # Data loading utilities
-├── health_data.duckdb       # Your health database (created after first run)
+├── /Users/Shared/health_data.duckdb  # Your health database (created after first run)
 ├── health_pipeline.log      # Processing logs
 ├── venv/                    # Virtual environment (created by you)
 └── health_data/             # Directory for your XML files

@@ -9,7 +9,7 @@ logger = logging.getLogger(__name__)
 class SimpleDataLoader:
     """Load transformed health data into DuckDB using pandas."""
     
-    def __init__(self, db_path: str = "health_data.duckdb"):
+    def __init__(self, db_path: str = "/Users/Shared/health_data.duckdb"):
         self.db = HealthDatabase(db_path)
         self.conn = self.db.get_connection()
     

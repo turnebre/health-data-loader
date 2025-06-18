@@ -6,7 +6,7 @@ logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 class HealthDatabase:
-    def __init__(self, db_path: str = "health_data.duckdb"):
+    def __init__(self, db_path: str = "/Users/Shared/health_data.duckdb"):
         """Initialize the health database connection."""
         self.db_path = db_path
         self.conn = duckdb.connect(db_path)
