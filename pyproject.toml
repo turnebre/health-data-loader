@@ -1,0 +1,65 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "health-data-mcp-server"
+version = "1.0.0"
+description = "MCP server for intelligent access to personal health data stored in DuckDB"
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [
+    {name = "Brendan Turner", email = "your.email@example.com"}
+]
+keywords = ["mcp", "health", "medical", "data", "duckdb", "ccda"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Healthcare Industry",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",  
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Medical Science Apps.",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "duckdb>=0.9.0",
+    "mcp>=1.0.0"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+    "black>=23.0.0",
+    "isort>=5.12.0",
+    "mypy>=1.0.0"
+]
+
+[project.urls]
+Homepage = "https://github.com/yourusername/health-data-mcp-server"
+Repository = "https://github.com/yourusername/health-data-mcp-server.git"
+Issues = "https://github.com/yourusername/health-data-mcp-server/issues"
+
+[project.scripts]
+health-mcp-server = "mcp_health_server:main"
+
+[tool.setuptools]
+py-modules = ["mcp_health_server", "health_queries"]
+
+[tool.black]
+line-length = 100
+target-version = ['py38']
+
+[tool.isort]
+profile = "black"
+line_length = 100
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true

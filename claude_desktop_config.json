@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "health-data": {
+      "command": "python",
+      "args": [
+        "/Users/brendanturner/Projects/health-data-loader/mcp_health_server.py",
+        "--db-path",
+        "health_data.duckdb"
+      ],
+      "env": {}
+    }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "health-data": {
+      "command": "/Users/brendanturner/.pyenv/shims/python",
+      "args": [
+        "/Users/brendanturner/Projects/health-data-loader/mcp_health_server.py",
+        "--db-path",
+        "/Users/brendanturner/Projects/health-data-loader/health_data.duckdb"
+      ],
+      "env": {
+        "PYTHONPATH": "/Users/brendanturner/Projects/health-data-loader:/Users/brendanturner/Projects/health-data-loader/venv/lib/python3.10/site-packages"
+      }
+    }
+  }
+}

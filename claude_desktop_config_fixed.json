@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "health-data": {
+      "command": "/Users/brendanturner/Projects/health-data-loader/run_mcp_server.sh",
+      "args": [
+        "--db-path",
+        "/Users/brendanturner/Projects/health-data-loader/health_data.duckdb"
+      ],
+      "env": {}
+    }
+  }
+}
